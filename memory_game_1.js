@@ -33,6 +33,7 @@ for (i of a) {
    elem.innerText = i;
    elem.className = "card";
    // Tag.className = "card card-hover"
+   ///asoifjafj
    board.appendChild(elem)
 }
 
