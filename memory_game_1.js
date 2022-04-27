@@ -1,8 +1,7 @@
 let cards = ["A", "B", "C", "D", "E", "F"];
-let dualArr = cards.concat(cards);
-console.log(dualArr);
-// debugger
-function shuffle(arr) {
+let doubleCards = cards.concat(cards);
+
+function shuffle(arr) {//ערבוב קלפים
    let shuffleAmount = 30;
    for (i = 0; i < shuffleAmount; i++) {
       let x = Math.round(Math.random() * (arr.length - 1));
@@ -13,27 +12,62 @@ function shuffle(arr) {
    }
    return arr
 }
-let a = shuffle(dualArr);
+let a = shuffle(doubleCards);
 console.log(a);
 
+let flipCards = [];
+const chooseCard = (event) => {
+   event.target.classList.add("show",`${event.target.id}`);
+   // event.target.classList.add();
+   flipCards.push(event.target);
+   console.log(flipCards);
+   // debugger
+   if (flipCards.length % 2 == 0) {
+  setTimeout(() => {
+      if (flipCards[0].id == flipCards[1].id) {
+         console.log("goooood");
+         flipCards[1].classList.add("hide")
+         flipCards[0].classList.add("hide")
+        
+      }
+      else {
+         console.log("bazzzzzz");
+         flipCards[0].classList.remove(`show`, `${flipCards[0].id}`)
+         flipCards[1].classList.remove(`show`, `${flipCards[1].id}`)
+      }
+       flipCards = []
+      }, (2*1000));
+   } 
+  
+}
 
-// console.log(shuffle(dualArr));
-// let board = document.getElementById("game-table");
-// let elem = document.createElement("div");
-// let elem1 = document.createElement("div");
-// elem.innerText = "C";
-// elem1.innerText = "C";
-// board.appendChild(elem)
-// board.appendChild(elem1)
-// console.log(board);
+
 let elem;
 let board = document.getElementById("game-table");
 for (i of a) {
    let elem = document.createElement("div");
-   elem.innerText = i;
-   elem.className = "card";
+   elem.innerText = "" ;
+   elem.id = i
+   console.log(elem.id);
+   elem.className = `card `;
+   elem.onclick = chooseCard;
    // Tag.className = "card card-hover"
    board.appendChild(elem)
 }
+// debugger
+// const button = document.getElementById("button");
+// button.onclick = hideCard;
+// function hideCard(e){
+// if (flipCards.length % 2 == 0) {
+//    if (flipCards[0] == flipCards[1]) {
+//       console.log("goooood");
 
-console.log(board);
+//    }
+//    else {
+//       console.log("bazzzzzz");
+//       flipCards[1].classList.remove("show")
+//       flipCards[0].classList.remove("show")
+//    }
+//    return flipCards = []
+// }
+// }
