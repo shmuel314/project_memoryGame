@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-   <style>
-       
-    </style>  
-     <link rel  = "stylesheet" href = "style_memory_game_1.css"/>
+<style>
+
+</style>
+<link rel="stylesheet" href="style_memory_game_1.css" />
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <button type="button" id = button>Flip Cards</button>
-    <div id = "game-table" > 
-    <script src = "memory_game_1.js"></script>
-</div>
+  <audio id="myAudio">
+    <source src="/home/giat/Desktop/fullstackCourse/html/project_memoryGame/mixkit-horse-stallion-snore-75.wav"
+      type="audio/ogg"></audio>
+
+    <audio id="happyAudio">
+      <source src="/home/giat/Desktop/fullstackCourse/html/project_memoryGame/small_clap.wav" type="audio/ogg"></audio>
+      
+    <div id="div-table"></div>
+    <div id="game-table">
+      <script src="memory_game_1.js"></script>
+
+    </div>
 </body>
+
 </html>
+
+<!-- <style>
+    embed { display: none; }
+    button:active + embed { display: block; }
+  </style>
+  
+  <button>Play Sound</button>
+  <embed src="path-to-audio-file.mp3" /> -->
