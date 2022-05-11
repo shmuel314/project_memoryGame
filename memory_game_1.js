@@ -30,7 +30,8 @@ function creatDivScore() {//יצירת דיב לשחקן
 
 function flexArr() {
    for (let index = 1; index <= count; index++) {//יצירת מערכים גמישים שחקן ודיב 
-      name1 = prompt("enter your name");
+      // name1 = prompt("enter your name");
+      name1 = "shmuel"
       let player = creatPlayers(name1, score)
       playersArr.push(player);
       creatDivScore();
@@ -97,7 +98,8 @@ function createCards() {
       boardGame.appendChild(elem)
    }
 }
-let numberOfCarda = prompt("choose how many cards you want")
+// let numberOfCarda = prompt("choose how many cards you want")
+let numberOfCarda= 16;
 let cards = [];
 let doubleCards = [];
 for (i = 0; i < (numberOfCarda / 2); i++) {
@@ -114,12 +116,12 @@ let playersArr = [];
 let divPlayer;
 
 let name1 = "";//שם השחקן
-let count = prompt("choose number of players");//מספר שחקנים ומעביר תור
+// let count = prompt("choose number of players");//מספר שחקנים ומעביר תור
+let count =5 
 let score = 0;//ניקוד שחקן
 let flipCards = [];//מערך קלפים שנלחצו
 let title = 37
 let elem;
-// debugger
 flexArr();
 count = 0
 

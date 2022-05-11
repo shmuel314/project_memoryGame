@@ -1,0 +1,175 @@
+#window{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    background-color: aquamarine;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%; 
+}
+
+#header1{
+    /* background-color: bisque; */
+    /* padding: 5px; */
+    text-align: center;
+    color: black;
+    font-size: 70px;
+    grid-column-start:1;
+    grid-column-end:6;
+    grid-row-start:1;
+    grid-row-end:2;    
+}
+
+
+
+.btnCards{
+    height: 100px;
+    width: 500px;
+    /* margin: 5px 0 0 630px  ; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    border: 3px solid grey;
+   font-size: xx-large;
+   font-family: Ubuntu, sans-serif;
+   text-align: center;
+   background-image: url(https://media.istockphoto.com/vectors/grey-play-icon-flat-design-style-vector-id1391443043?b=1&k=20&m=1391443043&s=170667a&w=0&h=dmozhfdyUc-gjzuht0eJWsRI1W9Y3TLnJ3lVvt3vwTw= );
+  background-position: left bottom, left top;
+  background-repeat: no-repeat, repeat;
+  background-size: contain      ;
+}
+
+.btnCards:hover{
+    cursor: pointer;
+    box-shadow: 5px 10px 20px gray inset;
+}
+.btnPlayer{
+    height: 100px;
+    width: 500px;
+    /* margin: 5px 0 0 630px  ; */
+    border: 3px solid grey;
+    font-size: xx-large;
+    font-family: Ubuntu, sans-serif;
+    text-align: center;
+    background-image: url(https://media.istockphoto.com/vectors/grey-play-icon-flat-design-style-vector-id1391443043?b=1&k=20&m=1391443043&s=170667a&w=0&h=dmozhfdyUc-gjzuht0eJWsRI1W9Y3TLnJ3lVvt3vwTw=);
+    background-position: left bottom, left top;
+    background-repeat: no-repeat, repeat;
+    background-size: contain      ;
+}
+
+.btnPlayer:hover{
+    cursor: pointer;
+    box-shadow: 5px 10px 20px gray inset;
+}
+
+
+
+.divBtnPlayer{
+    margin: 2px;
+    align-items: center;
+    grid-column-start:3;
+    grid-column-end:4;  
+}
+
+#playerScreen{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    grid-column-start:3;
+    grid-column-end:4;  
+    grid-row-start:2;
+    grid-row-end:3;  
+
+}
+
+#openScreen{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-column-start:3;
+    grid-column-end:4;
+    grid-row-start:2;
+    grid-row-end:3;  
+}
+
+.divBtnCards{
+    margin: 2px;
+    align-items: center;
+    grid-column-start:3;
+    grid-column-end:4;  
+}
+
+.btnSubmit{
+    /* display: grid; */
+    /* grid-template-columns: auto auto auto auto; */
+    /* grid-template-rows: auto auto auto auto; */
+    grid-column-start:2;
+    grid-column-end:3;  
+    align-items: center;
+    height: 50px;
+    width: 255px;
+    border-radius: 10px;
+    font-size: large;
+}
+.btnSubmit:hover{
+    cursor: pointer;
+    box-shadow: 5px 10px 20px gray inset;
+}
+
+.inputs{
+    height: 30px;
+    width: 250px;
+    /* margin: 5px 0 0 630px  ; */
+    grid-column-start:2;
+    grid-column-end:3;  
+    align-items: center;
+    font-size: large;
+    border: 2px solid black;
+
+}
+.divInput{
+display: grid;
+    align-items: center;
+    grid-template-columns: repeat(35, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto auto auto;
+    grid-column-start:3;
+    grid-column-end:4;  
+    grid-row-start:3;
+    grid-row-end:4; 
+} 
+
+.btnGame{
+    height: 50px;
+    width: 255px;
+    border-radius: 10px;
+    font-size: large;
+    background-color: rgb(60, 56, 56);
+    color: white;
+}
+.btnGame:hover{
+    cursor: pointer;
+    box-shadow: 5px 10px 20px rgb(32, 29, 29);
+}
+
+.divBtnGame{
+    grid-column-start:1;
+    grid-column-end:3;  
+    grid-row-start:7;  
+    grid-row-end:9; 
+    align-items: center;
+}
+
+.btnStartGame{
+    height: 50px;
+    width: 255px;
+    border-radius: 10px;
+    font-size: large;
+    background-color: rgb(60, 56, 56);
+    color: white;
+}
+
+.btnStartGame:hover{
+    cursor: pointer;
+    box-shadow: 5px 10px 20px rgb(32, 29, 29);
+}

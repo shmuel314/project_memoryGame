@@ -1,84 +1,181 @@
+#screen {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto auto;
+    gap: 10px;
+    padding: 5px;
+    /* background-color: brown; */
+    background-image: url(https://i0.wp.com/carrickswan.com/wp-content/uploads/2016/04/site-background.jpg?resize=300%2C195&ssl=1);
+    /* background-position: center; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 90%;
+    /* width: 99%; */
+    /* height: 100%; */
+    /* background-size: cover; */
+}
 
-            .card{
-                /* transition: all 0.6s ease 0s;
-                position: absolute;
-                perspective: 1000px;
-                transition: transform 0.6s;
-                transform-style: preserve-3d;
-                transform: rotateY(180deg); */
-            /* margin: 10px; */
-            border: 1px black solid;
-            width: 200px;
-            height: 200px;
-            padding: 10px;
-           
+#header{
+    grid-column-start:1;
+    grid-column-end:21;
+    grid-row-start:1;
+    grid-row-end:2;
+    /* background-color:rgba(31 ,33 ,126, 0.90); */
+    padding: 5px;
+    text-align: center;
+    color: black;
+    
+    font-size: 70px;
+    /* font-family: Ubuntu, sans-serif; */
+    
+}
+#game-table{    
+    grid-column-start:10;
+    grid-column-end:10;  
+    grid-row-start:2;  
+    grid-row-end:9;
+    display: grid;
+    gap: 3px;
+    grid-template-columns: repeat(4,minmax(0, 6fr));
+    grid-template-rows: repeat(6, minmax(0, 6fr)); 
+}
+.card{
+    display: flex;
+    background-color:  rgba(110, 175, 153, 0.46);
+    border-radius: 5px;
+    border: 2px black solid;
+    width: 270px;
+    height: 120px;
+    font-size: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    content-visibility: hidden;
+    align-items:center;
+    justify-content:center;
+    font-size: 20px;
+    text-align: center;
+
+    
+}
+.card:hover{
+    cursor: pointer;
+    box-shadow: 20px 20px 50px grey;
+    /* background-color: rgba(236, 63,28, 0.8); */
+    
+    border: 2px dotted black;
+}
+#div-table{
+    grid-column-start:1;
+    grid-column-end:3;  
+    grid-row-start:2;  
+    grid-row-end:6; 
+    background-color: transparent;
+}
+.divs{
+    background-color: rgb(193, 66, 66,0.6);
+    width: 90px;
+    height: 20px;
+    margin: 10px;
+    border: 2px black solid;
+    border-radius: 5;
+    padding: 10px;  
+    border-radius: 5px;
+    
+}
+#btn{
+    grid-column-start:1;
+    grid-column-end:3;  
+    grid-row-start:7;  
+    grid-row-end:9; 
+}
+#div-words-list{
+    grid-column-start:20;
+    grid-column-end:21;  
+    grid-row-start:2;  
+    grid-row-end:9; 
+    background-color:transparent;
+}
+.words{
+    margin: 10px;
+    border: 1px black solid;
+    border-radius: 5px;
+    padding: 10px;  
+    font-size: x-large;
+    background-color: rgb(231, 175, 128);
+    font-family: Ubuntu, sans-serif;
+}
+.success{
+    background-color: rgba(133, 92, 58, 0.315);
+}
+.playNow{
+    background-color: rgba(191,63,63,0.82);
+    /* border-radius: 5px; */
+    width: 110px;
+    height: 40px;
+    font-family: Ubuntu, sans-serif;
+    
+}  
+.show{
+    content-visibility:visible  ;
+    background-color: transparent;
+    /* background-image: url(https://wallup.net/wp-content/uploads/2018/09/25/600692-triangle-abstract-gradient-soft_gradient-Linux-blue-violet-red-orange-748x387.jpg); */
+    
+    
+}
+.show:hover{
+    content-visibility:visible  ;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    background-color: transparent;
+}
+.hide{
+    visibility: collapse;
+}    
+
+
+
+
+
+
+
+
+
+
+
+/*       
+            .card{ 
+            width: auto;
+            height: auto;
+            background-color: rgba(48, 167, 167, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 10px 10px;
+            font-size: 30px;
             text-align: center;
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/0/0c/Sport_balls.svg);
-            background-color: rgb(239, 243, 218);
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size:280px 220px;;    
-            font-size: xx-large;
-            font-family: 'Times New Roman', Times, serif;
-            font-weight: 900;
-            content-visibility: hidden;
+           content-visibility: hidden;
+           text-indent: -9999px;
         }
-        .a{
-            background-image: url(https://w17.snunit.k12.il/snunit_catalog/files/snunit_catalog/uploads/filename/640px_Flag_o_2017_03_21_12_02_39.png);
+        .card:hover{
+            cursor: pointer;
+  }
+  
+  
+ 
+      
+        #div-table{
+            grid-column-start: 1;
+            grid-column-end: 2;
+            display: grid;
+            justify-content: space-evenly;
+            grid-auto-flow: column;
+            width: 25%;
+            height: 25%;
+            background-color: aqua;
         }
-        .b{
-           background-image: url(https://catalog.archives.gov.il/wp-content/uploads/2018/01/%D7%93%D7%92%D7%9C-%D7%90%D7%A8%D7%94%D7%91.jpg )
+        #div-words-list{
+            background-color: aqua;
+            margin: 50px 50px 50px 500px;
         }
-        .c{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_England.svg/250px-Flag_of_England.svg.png);
-        }
-        .d{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/200px-Flag_of_the_United_Kingdom.svg.png);
-        }
-        .e{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_Sweden.svg/200px-Flag_of_Sweden.svg.png);
-        }
-        .f{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%2C_2020%E2%80%93present%29.svg/100px-Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%2C_2020%E2%80%93present%29.svg.png);
-        }
-        .g{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/100px-Flag_of_Italy.svg.png);
-        }
-        .h{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/200px-Flag_of_the_People%27s_Republic_of_China.svg.png);
-        }
-        .i{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/200px-Flag_of_Japan.svg.png);
-        }
-        .j{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/200px-Flag_of_Mexico.svg.png);
-        }
-        .k{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Flag_of_Uganda.svg/200px-Flag_of_Uganda.svg.png);
-        }
-        .l{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/200px-Flag_of_Austria.svg.png );
-        }
-        .m{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/200px-Flag_of_Ukraine.svg.png);
-        }
-        .n{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Flag_of_Ethiopia.svg/200px-Flag_of_Ethiopia.svg.png);
-        }
-        .o{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Flag_of_Yemen.svg/200px-Flag_of_Yemen.svg.png);
-        }
-        .p{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Bulgaria.svg/200px-Flag_of_Bulgaria.svg.png);
-        }
-        .q{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/200px-Flag_of_Brazil.svg.png);
-        }
-        .r{
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/200px-Flag_of_Argentina.svg.png);
-        }
-        
-
         .divs{
             background-color: coral;
             width: 70px;
@@ -91,39 +188,13 @@
         .playNow{
             background-color: aquamarine;
             border-radius: 5px;
-        }
-          
-            
-        .card:hover{
-                  cursor: pointer;
-        }
+        }    
         .show{
             content-visibility: visible ;
-            
+            text-indent: 0px;  
             }
         .hide{
             visibility: collapse;
         }    
-        #game-table{
-            display: grid;
-            grid-template-columns: auto auto auto auto;
-            background-color: #2196F3;
-            padding: 10px;
-            row-gap: 1px;
-            column-gap: 1px;
-            /* display: flex;
-            flex-wrap: wrap;  
-            justify-content: center;
-            width: 1000px;
-            height: 1000px; */
-            /* background-image: url(https://sites.google.com/site/majdalsh1515/home/mgrs-kdwrgl/%D7%9E%D7%92%D7%A8%D7%A9.jpg?attredirects=0) */
-        }
-        /* #div-table{
-            display: flex;
-            flex-wrap: wrap;
-            grid-template-columns: auto auto auto auto;
-            background-color: #2196F3;
-            padding: 10px;
-            row-gap: 1px;
-            column-gap: 1px;
-        } */
+       
+        */
