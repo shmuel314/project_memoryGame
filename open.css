@@ -173,3 +173,30 @@ display: grid;
     cursor: pointer;
     box-shadow: 5px 10px 20px rgb(32, 29, 29);
 }
+
+/* #finishScreen{ */
+    /* display: grid;
+        left: 0;
+        min-width: 90%;
+        min-height: 90%;
+        background-color: aqua; 
+        position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%; 
+    
+    } */
+
+    #cong{
+        background-image: url(https://bestanimations.com/media/fireworks/671801409ba-awesome-coloful-fireworks-animated-gif-image-3.gif);
+        /* background-size: contain; */
+        height: 500px;
+        width: 500px;
+        /* position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%; 
+     */
+    }

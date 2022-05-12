@@ -1,6 +1,9 @@
 // debugger
 let screen = document.getElementById("screen");
 screen.style.display = "none";
+let finishScreen = document.getElementById("finishScreen");
+// finishScreen.style.display = "none";
+
 let cadrScreen = document.getElementById("window");
 let openScreen = document.getElementById("openScreen");
 let playerScreen = document.getElementById("playerScreen");
@@ -79,8 +82,8 @@ function inputName(event) {//מסך שמות ומעבר למשחק
 
 function memory_game(event) {
     // debugger
-    cadrScreen.style.display = "none"
     screen.style.display = "grid";
+    cadrScreen.style.display = "none"
     // let header = document.createElement("div");
     // header.className = "header";
     // header.innerText = "Memory-card Game";
@@ -103,10 +106,10 @@ function memory_game(event) {
         }
         for (i of reWord) {
             i.classList.remove("success");
-        }for(i of playersArr){
+        } for (i of playersArr) {
             i.score = 0
         }
-        for(i of divArr){
+        for (i of divArr) {
             i.innerText = `${playersArr[count].name1}:  ${playersArr[count].score}`;
         }
         // shuffle(sliceArrCards);
@@ -218,11 +221,14 @@ function memory_game(event) {
 
                         reWord.push(wordTrns[event.target.id]);
                         allFlipCards.push(flipCards[0], flipCards[1]);
-                        console.log(allFlipCards);
-                        console.log(noc);
                         // debugger
-                        screenOfFinish();
-
+                        // screenOfFinish();
+                        if (allFlipCards.length == noc) {
+                        cong = document.createElement("div");
+                        cong.className = "cong";
+                        cong.innerText = "Congratulations!!!!"
+                        screen.appendChild(cong);
+                        }
 
                     }
                     else {
@@ -315,15 +321,22 @@ function memory_game(event) {
     btnStartGame.onclick = restartGame;
     divBtnStartGame.appendChild(btnStartGame);
 
-    function screenOfFinish(){
-    if(allFlipCards.length==noc){
-        screen.style.display = "none";
-        finishScreen = document.getElementById("finishScreen");
-        cong = document.createElement("p");
-        cong.className="cong";
-        cong.innerText = "Congratulations!!!!"
-        finishScreen.appendChild(cong);
-    }
+    function screenOfFinish() {
+        finishScreen
+        if (allFlipCards.length == noc) {
+            screen.style.display = "none";
+            finishScreen.style.display = "grid";
+            finishScreen.appendChild(btnStartGame);
+            finishScreen.appendChild(btnGame);
+            btnGame.onclick = newGame;
+            btnStartGame.onclick = restartGame;
+
+
+            cong = document.createElement("div");
+            cong.className = "cong";
+            cong.innerText = "Congratulations!!!!"
+            Screen.appendChild(cong);
+        }
     }
 }
 
