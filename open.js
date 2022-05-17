@@ -3,6 +3,8 @@ screen.style.display = "none";//מוסתר בינתיים של יפריע בעי
 let cadrScreen = document.getElementById("window");
 let openScreen = document.getElementById("openScreen");//מסך פתיחה כמות קלפים
 let playerScreen = document.getElementById("playerScreen");//מסך שני בחירת כמות שחקנים
+finishHeader = document.getElementById("header");
+
 numberCard();
 
 function numberCard() {//מסך בחירת קלפים ומעבר למסך שחקנים
@@ -47,7 +49,7 @@ function inputName(event) {//מסך שמות ומעבר למשחק
         // debugger
         divInput.remove();
     }
-     divInput = document.createElement("div");
+    divInput = document.createElement("div");
     divInput.className = "divInput";
     cadrScreen.appendChild(divInput);
     for (n = 1; n <= event.target.id; n++) {
@@ -96,13 +98,14 @@ function memory_game() {
         } for (i of playersArr) {
             i.score = 0
         }
-        let x=0
+        let x = 0
         for (i of divArr) {
             i.innerText = `${playersArr[x].name1}:  ${playersArr[x].score}`;
             x++
         }
-       
-        allFlipCards =[];
+        finishHeader.innerText = "Memory card Game";
+        finishHeader.style.background = "transparent"
+        allFlipCards = [];
     }
 
     let objCards = [//מערך קלפים 
@@ -156,15 +159,15 @@ function memory_game() {
     }
     numberOfCards();
 
-    
+
     let arrCards = [];
     function createDivCards(arr) {//יצירת קלף על המסך
-       let boardGame = document.getElementById("game-table");
+        let boardGame = document.getElementById("game-table");
         shuffle(arr);
         let shuffleCards = [];
         for (i of arr) {
             elem = document.createElement("div");
-            elem1 = document.createElement("div");    
+            elem1 = document.createElement("div");
             elem.innerText = `${i.English}`;
             elem1.innerText = `${i.Hebrew}`;
             elem.id = `${i.Id}`;
@@ -208,23 +211,7 @@ function memory_game() {
                         reWord.push(wordTrns[event.target.id]);//מערך של המילים בצד לאיתחול משחק
                         allFlipCards.push(flipCards[0], flipCards[1]);//בדיקה למסך סיום
                         if (allFlipCards.length == choosNumberCard) {
-                            cong = document.createElement("div");
-                            cong.className = "cong";
-                            let chek = 0;
-                            let win = playersArr[0].name1;
-                            for (i of playersArr) {
-                                if (i.score > chek) {
-                                    chek = i.score
-                                    win  = i.name1;
-                                    cong.innerText = `The big winner is ${win}`
-                                }
-                                else if(i.score==chek){
-                                    cong.innerText = "Draw \n 🙄";
-                                    cong.style.background = "blue"
-                                }
-                            }
-                            screen.appendChild(cong);
-                            btnRestartGame.style.display = "none"
+                            winScreen()
                         }
                     }
                     else {
@@ -296,45 +283,50 @@ function memory_game() {
     flexArr();
     count = 0
 
-function createBtnNewGame(){
-    divBtnGame = document.createElement("div");
-    divBtnGame.className = "divBtnGame";
-    screen.appendChild(divBtnGame);
-    btnGame = document.createElement("BUTTON");
-    btnGame.className = "btnGame";
-    btnGame.innerText = "New game";
-    btnGame.onclick = newGame;
-    divBtnGame.appendChild(btnGame);
+    function createBtnNewGame() {
+        divBtnGame = document.createElement("div");
+        divBtnGame.className = "divBtnGame";
+        screen.appendChild(divBtnGame);
+        btnGame = document.createElement("BUTTON");
+        btnGame.className = "btnGame";
+        btnGame.innerText = "New game";
+        btnGame.onclick = newGame;
+        divBtnGame.appendChild(btnGame);
+    }
+    createBtnNewGame();
+
+    function createBtnRestartGame() {
+        divBtnRestartGame = document.createElement("div");
+        divBtnRestartGame.className = "divBtnRestartGame";
+        divBtnGame.appendChild(divBtnRestartGame);
+        btnRestartGame = document.createElement("BUTTON");
+        btnRestartGame.className = "btnRestartGame";
+        btnRestartGame.innerText = "Restart game";
+        btnRestartGame.onclick = restartGame;
+        divBtnRestartGame.appendChild(btnRestartGame);
+    }
+    createBtnRestartGame();
+    function winScreen() {
+        let check = 0;
+        let win = playersArr[0].name1;
+        if (playersArr.length == 1) {
+            finishHeader.innerText = `You won! 👑`
+            finishHeader.style.background = "cadetblue"
+        }
+        else {
+            for (i of playersArr) {
+                if (i.score > check) {
+                    check = i.score
+                    win = i.name1;
+                    finishHeader.innerText = `The winner is: ${win} 👑`
+                    finishHeader.style.background = "cadetblue"
+                }
+                else if (i.score == check) {
+                    finishHeader.innerText = "Tie 🙄";
+                    finishHeader.style.background = "cadetblue"
+                }
+            }
+        }
+    }
 }
-createBtnNewGame();
 
-function createBtnRestartGame(){
-    divBtnRestartGame = document.createElement("div");
-    divBtnRestartGame.className = "divBtnRestartGame";
-    divBtnGame.appendChild(divBtnRestartGame);
-    btnRestartGame = document.createElement("BUTTON");
-    btnRestartGame.className = "btnRestartGame";
-    btnRestartGame.innerText = "Restart game";
-    btnRestartGame.onclick = restartGame;
-    divBtnRestartGame.appendChild(btnRestartGame);
-}
-createBtnRestartGame();
-
-    // function screenOfFinish() {
-    //     finishScreen
-    //     if (allFlipCards.length == noc) {
-    //         screen.style.display = "none";
-    //         finishScreen.style.display = "grid";
-    //         finishScreen.appendChild(btnStartGame);
-    //         finishScreen.appendChild(btnGame);
-    //         btnGame.onclick = newGame;
-    //         btnStartGame.onclick = restartGame;
-
-
-    //         cong = document.createElement("div");
-    //         cong.className = "cong";
-    //         cong.innerText = "Congratulations!!!!"
-    //         Screen.appendChild(cong);
-    //     }
-    // }
-}
