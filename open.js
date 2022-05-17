@@ -1,12 +1,8 @@
-// debugger
-let screen = document.getElementById("screen");
-screen.style.display = "none";
-let finishScreen = document.getElementById("finishScreen");
-// finishScreen.style.display = "none";
-
+let screen = document.getElementById("screen");//מסך משחק
+screen.style.display = "none";//מוסתר בינתיים של יפריע בעיצוב
 let cadrScreen = document.getElementById("window");
-let openScreen = document.getElementById("openScreen");
-let playerScreen = document.getElementById("playerScreen");
+let openScreen = document.getElementById("openScreen");//מסך פתיחה כמות קלפים
+let playerScreen = document.getElementById("playerScreen");//מסך שני בחירת כמות שחקנים
 numberCard();
 
 function numberCard() {//מסך בחירת קלפים ומעבר למסך שחקנים
@@ -24,8 +20,7 @@ function numberCard() {//מסך בחירת קלפים ומעבר למסך שחק
 }
 let inputArr = [];
 function players(event) {//מסך שחקנים ומעבר למסך שמות
-    // debugger
-    noc = event.target.id
+    choosNumberCard = event.target.id//שומר את כמות הקלפים שנבחרה.
     for (r = 1; r < 5; r++) {
         let divBtnPlayer = document.createElement("div");
         divBtnPlayer.className = "divBtnPlayer";
@@ -40,22 +35,19 @@ function players(event) {//מסך שחקנים ומעבר למסך שמות
         btnPlayer.id = r;
         btnPlayer.className = "btnPlayer";
         btnPlayer.addEventListener("click", inputName);
-        ;
         divBtnPlayer.append(btnPlayer);
         openScreen.style.display = "none"
 
     }
 }
-
+let divInput;
 function inputName(event) {//מסך שמות ומעבר למשחק
-    // debugger
     inputArr.push(event.target)
-    console.log(inputArr);
-
-    if (inputArr.length > 1) {
+    if (inputArr.length > 1) {//מוחק שהאינפוטים לא יוכפלו בכל בחירה אלא תתחלף הכמות לפי הבחירה האחרונה
+        // debugger
         divInput.remove();
     }
-    divInput = document.createElement("div");
+     divInput = document.createElement("div");
     divInput.className = "divInput";
     cadrScreen.appendChild(divInput);
     for (n = 1; n <= event.target.id; n++) {
@@ -67,26 +59,20 @@ function inputName(event) {//מסך שמות ומעבר למשחק
         inputArr[n] = input;
         divInput.appendChild(input);
     }
-
-    nop = event.target.id;
+    choosePlayersCard = event.target.id;//שומר את כמות השחקנים שנבחרה לפי הID של הכפתור שנבחר
     let btnSubmit = document.createElement("BUTTON");
     btnSubmit.innerText = "submit";
     btnSubmit.className = "btnSubmit";
     divInput.appendChild(btnSubmit);
     btnSubmit.onclick = memory_game;
-    //  playerScreen.style.display = "none"
 }
 
 
 
 
-function memory_game(event) {
-    // debugger
+function memory_game() {
     screen.style.display = "grid";
     cadrScreen.style.display = "none"
-    // let header = document.createElement("div");
-    // header.className = "header";
-    // header.innerText = "Memory-card Game";
 
     function createCards(English, Hebrew, Id) {// יצירת קלף כאובייקט
         return {
@@ -101,19 +87,22 @@ function memory_game(event) {
     }
 
     function restartGame() {//כפתור ריענון משחק נוכחי
-        for (i of allFlipCards) {
-            i.classList.remove("hide", "show");
+        for (i of arrCards) {
+            i.classList.add("hide_restart");//מעלים את הקלפים כדי שיחזרו בריענון מעורבבים מחדש
         }
+        createDivCards(sliceArrCards)//מחזיר את הקלפים מעורבבים
         for (i of reWord) {
             i.classList.remove("success");
         } for (i of playersArr) {
             i.score = 0
         }
+        let x=0
         for (i of divArr) {
-            i.innerText = `${playersArr[count].name1}:  ${playersArr[count].score}`;
+            i.innerText = `${playersArr[x].name1}:  ${playersArr[x].score}`;
+            x++
         }
-        // shuffle(sliceArrCards);
-        // createDivCards(sliceArrCards);
+       
+        allFlipCards =[];
     }
 
     let objCards = [//מערך קלפים 
@@ -143,7 +132,6 @@ function memory_game(event) {
         createCards("Gutter", "מַרְזֵב", "X"),
         createCards("Collapse", "הִתְמוֹטֵט", "Y"),
         createCards("Average", "ממוצע", "Z"),
-
     ]
 
     function shuffle(arr) {//ערבוב קלפים
@@ -161,22 +149,22 @@ function memory_game(event) {
 
     let sliceArrCards = [];
     function numberOfCards() {//חיתוך כמות קלפים מהמערך
-        shuffle(objCards);
+        shuffle(objCards);//ערבוב לפני חיתוך מוודא שכל פעם יחתוך קלפים אחרים
         let x = Math.floor(Math.random() * 10)
-        // debugger
-        sliceArrCards = objCards.slice(x, x + noc / 2)
+        sliceArrCards = objCards.slice(x, x + choosNumberCard / 2)
         return sliceArrCards
     }
     numberOfCards();
 
+    
+    let arrCards = [];
     function createDivCards(arr) {//יצירת קלף על המסך
+       let boardGame = document.getElementById("game-table");
         shuffle(arr);
         let shuffleCards = [];
-        let arrCards = [];
-        let boardGame = document.getElementById("game-table");
         for (i of arr) {
             elem = document.createElement("div");
-            elem1 = document.createElement("div");
+            elem1 = document.createElement("div");    
             elem.innerText = `${i.English}`;
             elem1.innerText = `${i.Hebrew}`;
             elem.id = `${i.Id}`;
@@ -197,12 +185,12 @@ function memory_game(event) {
 
 
     function chooseCard(event) {//לחיצה על קלף
+        console.log(event.target);
         let sadAudio = document.getElementById("sadAudio")
         let happyAudio = document.getElementById("happyAudio")
         if ((flipCards.length < 2)) {
             event.target.classList.add("show");
             flipCards.push(event.target);
-
             if (flipCards.length == 2) {
                 if (flipCards[0].innerText == flipCards[1].innerText) {
                     flipCards.splice(1, 1)
@@ -211,34 +199,40 @@ function memory_game(event) {
             if (flipCards.length == 2) {
                 setTimeout(() => {
                     if (flipCards[0].id == flipCards[1].id) {
-                        console.log("goooood");
                         flipCards[1].classList.add("hide")
                         flipCards[0].classList.add("hide");
                         playersArr[count].score++
                         divArr[count].innerText = `${playersArr[count].name1}:  ${playersArr[count].score}`;
                         happyAudio.play();
                         wordTrns[event.target.id].classList.add("success");
-
-                        reWord.push(wordTrns[event.target.id]);
-                        allFlipCards.push(flipCards[0], flipCards[1]);
-                        // debugger
-                        // screenOfFinish();
-                        if (allFlipCards.length == noc) {
-                        cong = document.createElement("div");
-                        cong.className = "cong";
-                        cong.innerText = "Congratulations!!!!"
-                        screen.appendChild(cong);
+                        reWord.push(wordTrns[event.target.id]);//מערך של המילים בצד לאיתחול משחק
+                        allFlipCards.push(flipCards[0], flipCards[1]);//בדיקה למסך סיום
+                        if (allFlipCards.length == choosNumberCard) {
+                            cong = document.createElement("div");
+                            cong.className = "cong";
+                            let chek = 0;
+                            let win = playersArr[0].name1;
+                            for (i of playersArr) {
+                                if (i.score > chek) {
+                                    chek = i.score
+                                    win  = i.name1;
+                                    cong.innerText = `The big winner is ${win}`
+                                }
+                                else if(i.score==chek){
+                                    cong.innerText = "Draw \n 🙄";
+                                    cong.style.background = "blue"
+                                }
+                            }
+                            screen.appendChild(cong);
+                            btnRestartGame.style.display = "none"
                         }
-
                     }
                     else {
-                        console.log("bazzzzzz");
-                        flipCards[0].classList.remove(`show`);
-                        flipCards[1].classList.remove(`show`);
+                        flipCards[0].classList.remove("show");
+                        flipCards[1].classList.remove("show");
                         divArr[count].classList.remove("playNow")
                         count++
                         sadAudio.play()
-
                         if (count == playersArr.length) {
                             count = 0;
                         }
@@ -259,7 +253,6 @@ function memory_game(event) {
 
     let boardDiv = document.getElementById("div-table")
     function creatDivScore() {//יצירת דיב לשחקן
-        // debugger
         let divPlayer = document.createElement("div")
         divPlayer.className = "divs";
         divPlayer.innerText = `${name1}: 0`
@@ -269,7 +262,6 @@ function memory_game(event) {
     }
 
     function flexArr() {//יצירת שחקנים וניקוד גמישים
-        // debugger
         n = 1;
         for (let index = 1; index <= count; index++) {//יצירת מערכים גמישים שחקן ודיב 
             name1 = inputArr[n].value;
@@ -279,8 +271,9 @@ function memory_game(event) {
             creatDivScore();
         }
     }
+
     let wordTrns = [];
-    function wordList() {
+    function wordList() {//בניית רשימת מילים בצד
         divWordList = document.getElementById("div-words-list");
         for (i of sliceArrCards) {
             word = document.createElement("p");
@@ -289,20 +282,21 @@ function memory_game(event) {
             word.innerText = `${i.English} : ${i.Hebrew}`;
             wordTrns[i.Id] = word
             divWordList.appendChild(word);
-            console.log(word);
         }
     }
     wordList(objCards);
+
     let reWord = [];//מערך לאיפוס דיב מילים
     let allFlipCards = [];//מערך לאיפוס קלפים
-    let flipCards = [];
-    let count = nop
+    let flipCards = [];//מערך לחיצה על קלף
+    let count = choosePlayersCard
     let score = 0;
     let playersArr = [];
     let divArr = [];
     flexArr();
     count = 0
-    // debugger
+
+function createBtnNewGame(){
     divBtnGame = document.createElement("div");
     divBtnGame.className = "divBtnGame";
     screen.appendChild(divBtnGame);
@@ -311,75 +305,36 @@ function memory_game(event) {
     btnGame.innerText = "New game";
     btnGame.onclick = newGame;
     divBtnGame.appendChild(btnGame);
-
-    divBtnStartGame = document.createElement("div");
-    divBtnStartGame.className = "divBtnStartGame";
-    divBtnGame.appendChild(divBtnStartGame);
-    btnStartGame = document.createElement("BUTTON");
-    btnStartGame.className = "btnStartGame";
-    btnStartGame.innerText = "Restart game";
-    btnStartGame.onclick = restartGame;
-    divBtnStartGame.appendChild(btnStartGame);
-
-    function screenOfFinish() {
-        finishScreen
-        if (allFlipCards.length == noc) {
-            screen.style.display = "none";
-            finishScreen.style.display = "grid";
-            finishScreen.appendChild(btnStartGame);
-            finishScreen.appendChild(btnGame);
-            btnGame.onclick = newGame;
-            btnStartGame.onclick = restartGame;
-
-
-            cong = document.createElement("div");
-            cong.className = "cong";
-            cong.innerText = "Congratulations!!!!"
-            Screen.appendChild(cong);
-        }
-    }
 }
+createBtnNewGame();
+
+function createBtnRestartGame(){
+    divBtnRestartGame = document.createElement("div");
+    divBtnRestartGame.className = "divBtnRestartGame";
+    divBtnGame.appendChild(divBtnRestartGame);
+    btnRestartGame = document.createElement("BUTTON");
+    btnRestartGame.className = "btnRestartGame";
+    btnRestartGame.innerText = "Restart game";
+    btnRestartGame.onclick = restartGame;
+    divBtnRestartGame.appendChild(btnRestartGame);
+}
+createBtnRestartGame();
+
+    // function screenOfFinish() {
+    //     finishScreen
+    //     if (allFlipCards.length == noc) {
+    //         screen.style.display = "none";
+    //         finishScreen.style.display = "grid";
+    //         finishScreen.appendChild(btnStartGame);
+    //         finishScreen.appendChild(btnGame);
+    //         btnGame.onclick = newGame;
+    //         btnStartGame.onclick = restartGame;
 
 
-
-
-
-
-
-// function asd (){
-//     alert("fgdfx");
-//     for (i=0;i<12;i++) {
-//         elem = document.createElement("div");
-//         elem.innerText = `${i} card`;
-//         elem.id = i;
-//         elem.className = `card`;
-//         // elem.onclick = chooseCard;
-//         cadrScreen.append(elem);
-//     }
-// openScreen.style.display = "none"
-//     // let header = document.getElementById("header");
-//     // header.style.backgroundColor = 'blue';
-// }
-// // let btn12 = document.getElementById("12 cards");
-// // let btn16 = document.getElementById("16 cards");
-// // let btn20 = document.getElementById("20 cards");
-// // let btn24 = document.getElementById("24 cards");
-
-
-
-// let num = Number(prompt(`If you want 12 cards, choose: 1. \nIf you want 16 cards, choose: 2.
-// If you want 20 cards, choose: 3. \nIf you want 24 cards, choose: 4.`));
-// switch(num){
-//     case 1:
-//         num = 6
-//         break;
-//     case 2:
-//         num = 8
-//         break;
-//     case 3:
-//         num = 10
-//         break;
-//     case 4:
-//         num = 12
-//         break;
-// }
+    //         cong = document.createElement("div");
+    //         cong.className = "cong";
+    //         cong.innerText = "Congratulations!!!!"
+    //         Screen.appendChild(cong);
+    //     }
+    // }
+}
